@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProjectMemberController;
+use App\Http\Controllers\MailController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,7 +29,11 @@ Route::post('task', [TaskController::class, 'store'])->name('task.store');
 Route::get('/project/member/add/{user_id}', [ProjectMemberController::class, 'add_project_member'])->name('add.project.member');
 
 //Mail Controller
-Route::get('/dmeo-email', [MailController::class, 'demo_mail'])->name('demo.mail');
+Route::get('/demo-email', [MailController::class, 'demo_email'])->name('demo.email');
+
+Route::post('/demo-email-send', [MailController::class, 'demo_email_send'])->name('demo.email.send');
+
+Route::get('/dmeo-email/{id}', [MailController::class, 'send_email'])->name('send.email');
 
 
 

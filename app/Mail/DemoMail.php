@@ -16,9 +16,11 @@ class DemoMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public $data;
+
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -27,7 +29,8 @@ class DemoMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Demo Mail',
+            // subject: 'Demo Mail', // static
+            subject: $this->data['subject'], //dynamic
         );
     }
 
