@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\DemoMail;
+use App\Models\User;
 
 class MailController extends Controller
 {
@@ -16,14 +17,20 @@ class MailController extends Controller
     {
         $data = [
             'subject' => $request->subject,
-            'name' => $request->name,
+            'name' => 'cvcvcv',
             'message' => $request->message,
-            
-
         ];
 
-        \Mail::to($request->email)->send(new DemoMail($data));
+        $users = User::all(); // received the database user data
+
+        foreach($users as $user)
+        {
+            $data['name'] = $user->name;
+            \Mail::to($user->email)->send(new DemoMail($data));
+        }
         return "Email Sent Successfully";
+
+        
     }
 
     public function send_email()  //this for static email

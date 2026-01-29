@@ -19,10 +19,10 @@
             <label for="name">Name: </label>
             <input type="text" name="name" required />
         </div>
-        <div>
+        <!-- <div>
             <label for="name">Email: </label>
             <input type="text" name="email" required />
-        </div>
+        </div> -->
         <div>
             <label for="name">Message: </label>
             <textarea type="text" id="message" name="message" required></textarea>
